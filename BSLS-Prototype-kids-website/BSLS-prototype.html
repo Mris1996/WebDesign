@@ -1,0 +1,59 @@
+<h1>Learning Tool(ver1)</h1>
+<html>
+  <head>
+    <script src="bsls-processing.js"></script>
+	<link rel="stylesheet" href="bsls-ui.css">
+	<img  align="middle"src="background.jpg" id="background">
+	<img src="logo.gif" id="logo" alt="logo">
+  </head>
+  <body onload="onstart();">
+   <span class="counter" id="timer">60</span> 
+	<div class="main">
+	
+    No.of Columns <input type="number" style="width:50px;" oninput="maxvalue2(this);" onkeydown="return false;"onkeypress="return /[0-9]/i.test(event.key)" id="columns" min="0" value="3" max="100" name="col" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	No.of Rows <input type="number" style="width:50px;" oninput="maxvalue2(this);" onkeydown="return false;" max onkeypreturn /[0-9]/i.test(event.key)" id="rows" min="0" value="3" max="100" name="row"required> 
+	
+	<br></br>
+	Sample Cell Data <input type="text" style="width:50px;" id="celldata"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Height(1-50)  <input type="number" style="width:50px;" oninput="maxvalue(this);" onkeydown="return false;"  onkeypress="return /[0-9]/i.test(event.key)" min="0"  value="10"id="height" name="cellh" required ="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    Width(1-50)  <input type="number" style="width:50px;" oninput="maxvalue(this);" onkeydown="return false;"  onkeypress="return /[0-9]/i.test(event.key)" min="0" value="10" id="width" name="cellw" required ="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	
+	Cell Background Color  <select id="colourc">
+  <option style="background-color:black;color:white;">Black
+  <option style=background-color:white; selected >White
+  <option style=background-color:red;>Red
+  <option style=background-color:green;>Green
+  <option style=background-color:blue;>Blue
+  <option style=background-color:yellow;>Yellow
+  <option style=background-color:purple;>Purple
+  <option style=background-color:cyan;>Cyan
+  <option style=background-color:pink;>Pink
+  <option style=background-color:orange;>Orange
+  <option style=background-color:violet;>Violet
+  <option style=background-color:grey;>Grey
+  <option style=background-color:indigo;>Indigo
+    <option style=background-color:Gold;>gold
+  </select>
+
+	
+	<br></br>
+		</div> 
+		<div class = "allthebuttons">
+	<button class="gamestart" id="gamestart" onClick="createtable();starttimer();reveal();"></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	<button  class="restart"id="restart" onClick="restarttable();"></button>
+	<button  class="stop"id="stop" onClick="stoptimer();"></button>
+		</div>
+		<hr/>
+	<img id="gameimg" class="gameimg">
+	<p class="score" id="score"></p>
+	
+	<div class="table" id="table" align="middle">
+
+    <p style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" id=generatedTable > </p>
+
+	</div>
+
+	</br>
+	
+  </body>
+</html>

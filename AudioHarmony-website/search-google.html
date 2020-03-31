@@ -1,0 +1,346 @@
+<html>
+<head>
+<div class ="logo"> 
+ <img  align="middle"src="logo.jpg" id="logo">
+</div>
+<div class="video">
+<video autoplay muted loop id="myvideo">
+  <source src="wallpaper1.mp4" type="video/mp4">
+</video> 
+</div>
+<link rel="stylesheet" href="search.css">
+<script>
+function myFunction1() {
+ 
+  document.getElementById("rdtmm").required=true;
+  document.getElementById("rdtyy").required=true;
+  document.getElementById("rdfdd").required=true;
+  document.getElementById("rdfmm").required=true;
+  document.getElementById("rdfyy").required=true;
+  
+  var fmm = document.getElementById("rdfmm").value;
+  var y1 = Number(fmm);
+
+  if(y1==2){
+  document.getElementById("rdfdd").value = "1"
+  document.getElementById("rdfdd").max = "29";
+  }
+  else if(y1==4 || y1==6 || y1==9 || y1== 11){
+  document.getElementById("rdfdd").value = "1"
+  document.getElementById("rdfdd").max = "30";
+  }
+  else {
+  document.getElementById("rdfdd").value = "1"
+  document.getElementById("rdfdd").max = "31";
+}
+}
+function myFunction2() {
+ 
+  document.getElementById("rdtdd").required=true;
+  document.getElementById("rdtyy").required=true;
+  document.getElementById("rdfdd").required=true;
+  document.getElementById("rdfmm").required=true;
+  document.getElementById("rdfyy").required=true;
+}
+
+function myFunction3() {
+  document.getElementById("rdtyy").min = document.getElementById("rdfyy").value
+  document.getElementById("rdtdd").required=true;
+  document.getElementById("rdtmm").required=true;
+  document.getElementById("rdtyy").required=true;
+  document.getElementById("rdfmm").required=true;
+  document.getElementById("rdfdd").required=true;
+}
+
+function myFunction4() {
+  
+  document.getElementById("rdtdd").required=true;
+  document.getElementById("rdtmm").required=true;
+  document.getElementById("rdtyy").required=true;
+  document.getElementById("rdfmm").required=true;
+  document.getElementById("rdfyy").required=true;
+  var tmm = document.getElementById("rdtmm").value;
+  var y2 = Number(tmm);
+
+  if(y2==2){
+  document.getElementById("rdtdd").value = "1"
+  document.getElementById("rdtdd").max = "29";
+  }
+  else if(y2==4 || y2==6 || y2==9 || y2== 11){
+  document.getElementById("rdtdd").value = "1"
+  document.getElementById("rdtdd").max = "30";
+  }
+  else {
+  document.getElementById("rdtdd").value = "1"
+  document.getElementById("rdtdd").max = "31";
+  }
+  
+  
+ 
+}
+
+
+
+function myFunction5() {
+ 
+  document.getElementById("rdtmm").required=true;
+  document.getElementById("rdtyy").required=true;
+  document.getElementById("rdtdd").required=true;
+  document.getElementById("rdfdd").required=true;
+  document.getElementById("rdfyy").required=true;
+}
+function myFunction6() {
+ var d = new Date();
+  var n = d.getFullYear();
+  document.getElementById("rdtyy").max = n;
+  document.getElementById("rdtmm").required=true;
+  document.getElementById("rdtyy").required=true;
+  document.getElementById("rdfdd").required=true;
+  document.getElementById("rdfmm").required=true;
+  document.getElementById("rdtdd").required=true;
+  
+}
+function myFunction7(){
+
+var tmm = document.getElementById("rdtmm").value;
+  var m2 = Number(tmm);
+  var fmm = document.getElementById("rdfmm").value;
+  var m1 =Number(fmm);
+  var tyy = document.getElementById("rdtyy").value; 
+  var y2 = Number(tyy);
+  var fyy =  document.getElementById("rdfyy").value;
+  var y1 = Number(fyy);
+
+  if(y1==y2)
+  {
+  if(m1==m2 || m2 < m1)
+	{
+	 document.getElementById("rdtdd").min = document.getElementById("rdfdd").value
+	 if(m2<m1){
+	alert("The 'to' date shouldnt be before the 'from'date");
+	 event.preventDefault();
+		}
+	}
+  }
+
+}
+function autorun(){
+document.getElementById("advanced").style.display = "none";
+}
+function maxLengthCheck(object){
+if(object.value.length > object.maxLength)
+  object.value = object.value.slice(0,object.maxLength)
+
+}
+function reload(){
+return false;
+}
+function advanced(){
+
+
+var x = document.getElementById("advanced");
+	
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}  
+
+</script>
+
+</head>
+<body onload="autorun();">
+   
+<h1>Music Search</h1>
+
+<form id ="search" action="http://www.google.com/search" method="GET" onSubmit="reload();"> 
+<u><h2>Normal Search</h2></u> 
+  <div class="songtitle">  
+  
+    <p>Song Title</p>
+    <input type="text" name="st" placeholder="Song Title">
+  </div>  
+  <div class="album name">  
+    <p>Album Name</p>
+    <input type="text" name="an" placeholder="Album Name">
+  </div>  
+  <div class="releasedate">
+    <p>Release Date</p>
+     <h3>From
+     <select name="q" id ="rdfmm" onkeypress="return /[0-9]/i.test(event.key)" onchange="myFunction1()">
+                      <option value=""></option>
+                      <option value="1">January</option>
+                      <option value="2">Febuary</option>
+					  <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                                    </select>
+               
+                  <input type="number" name="q" id="rdfdd" min="1" max="31"onkeypress="return /[0-9]/i.test(event.key)" oninput="maxLengthCheck(this)" maxlength="2" onchange="myFunction2()" />
+                  <input type="number" name="q" id="rdfyy" min="1901" onkeypress="return /[0-9]/i.test(event.key)"oninput="maxLengthCheck(this)" maxlength="4" onchange="myFunction3()"/>
+                  To
+                  <select name="q" id ="rdtmm" onkeypress="return /[0-9]/i.test(event.key)" onchange="myFunction4()">
+                      <option value=""></option>
+                      <option value="1">January</option>
+                      <option value="2">Febuary</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                                    </select>
+                  <input name="q" type="number" id="rdtdd" min="1" max="31"onkeypress="return /[0-9]/i.test(event.key)" oninput="maxLengthCheck(this)" maxlength="2" onchange="myFunction5()"/>
+                  <input name="q" type="number" id="rdtyy" min="1901"onkeypress="return /[0-9]/i.test(event.key)"oninput="maxLengthCheck(this)" maxlength="4" onchange="myFunction6()"/>
+                  </h3>
+  </div>
+  <div class="recordingartistes">
+    <p>Name of Recording artistes</p>
+    <input type="text" name="q" placeholder="Recording artistes">
+  </div>
+  <div class="performingartistes">
+    <p>Name of Performing artistes</p>
+    <input type="text" name="q" placeholder="Performing artistes">
+  </div>
+  <div class="mediatype">
+  <p>Type Of Media</p>
+	<input type="checkbox" name="q" value="CD"> CD
+	<input type="checkbox" name="q" value="MP3"> MP3
+	<input type="checkbox" name="q" value="MP4"> MP4
+	<input type="checkbox" name="q" value="Ogg"> Ogg
+	<input type="checkbox" name="q" value="WAV"> WAV
+	<input type="checkbox" name="q" value="RA"> RA
+  </div>
+  <div class="genre">
+  <p>Genre</p>
+  <input type="checkbox" name="q" value="Avant-Garde">Avant-Garde |
+  <input type="checkbox" name="q" value="Blues">Blues |
+  <input type="checkbox" name="q" value="Children">Children | 
+  <input type="checkbox" name="q" value="Classical">Classical | 
+  <input type="checkbox" name="q" value="Comedy-Spoken">Comedy-Spoken |
+  <input type="checkbox" name="q" value="Country">Country |
+  <input type="checkbox" name="q" value="Easy-Listening">Easy-listening |
+  <input type="checkbox" name="q" value="Electronic">Electronic |
+  <input type="checkbox" name="q" value="Folk">Folk |
+  <input type="checkbox" name="q" value="Holiday">Holiday |
+  <input type="checkbox" name="q" value="International">International |
+  <input type="checkbox" name="q" value="Jazz">Jazz |
+  <input type="checkbox" name="q" value="Latin">Latin |
+  <input type="checkbox" name="q" value="New-Age">New-age |
+  <input type="checkbox" name="q" value="Pop-Rock">Pop-Rock |
+  <input type="checkbox" name="q" value="RnB">RnB |
+  <input type="checkbox" name="q" value="Rap">Rap |
+  <input type="checkbox" name="q" value="Reggae">Reggae |
+  <input type="checkbox" name="q" value="Religious">Religious |
+  <input type="checkbox" name="q" value="Stage & Screen">Stage & Screen |
+  <input type="checkbox" name="q" value="Vocal">Vocal |
+ </div>
+  <div class="language">
+  <p>Languages</p>
+	 <input type="checkbox" name="ser-lang" value="English">English |
+	 <input type="checkbox" name="ser-lang" value="Korean"> Korean |
+	 <input type="checkbox" name="ser-lang" value="Chinese">Chinese |
+     <input type="checkbox" name="ser-lang" value="Japanese">Japanese |
+	 <input type="checkbox" name="ser-lang" value="Malay">Malay |
+	 <input type="checkbox" name="ser-lang" value="Tamil">Tamil |
+	 <input type="checkbox" name="ser-lang" value="Russian">Russian |
+	 <input type="checkbox" name="ser-lang" value="Spanish">Spanish |
+	 <input type="checkbox" name="ser-lang" value="Italian">Italian |
+	 <input type="checkbox" name="ser-lang" value="Arabic">Arabic |
+	 <input type="checkbox" name="ser-lang" value="Thai">Thai 
+	
+  </div>
+  <hr></hr>
+
+<u><h2>Advanced Search</h2></u>
+<input type='button' class="button2" onclick="advanced();return false;" value="Advance" /> 
+ <div id="advanced" > 
+<div class="musiccomposers">
+  <p>Name(s) of music composers</p>
+    <input type="text" name="q" placeholder="Music Composer">
+  </div>
+<br></br>
+<div class="songwritersor/lyrcisits">
+    <p>Name(s) of song writers or lyrcisits</p>
+    <input type="text" name="q" placeholder="Song Writer/ Lyrcisits">
+</div>
+<br></br>
+<div  class="recordingtypes">
+      <p>Recording Types</p>
+      <input type="checkbox" name="q" value="Main Albums"> Main Albums
+      <input type="checkbox" name="q" value="Studio Recordings"> Studio Recordings
+      <input type="checkbox" name="q" value="Live Recordings"> Live Recordings
+      <input type="checkbox" name="q" value="Singles"> Singles 
+      <input type="checkbox" name="q" value="Remixes"> Remixes 
+	</div>
+<br></br>
+<div  class="albummood">
+      <p>Album Mood</p>
+		<input type="checkbox" name="q" value="Aggressive/Volatile">Aggressive 
+        <input type="checkbox" name="q" value="Anxiety/Fear">Fear 
+        <input type="checkbox" name="q" value="Bleak/Cold">Cold 
+        <input type="checkbox" name="q" value="Calm/Relaxed">Calm 
+        <input type="checkbox" name="q" value="Cynical/Wry">Wry 
+        <input type="checkbox" name="q" value="Dramatic/Theatrical">Theatrical 
+        <input type="checkbox" name="q" value="Fun/Good-Natured">Fun 
+        <input type="checkbox" name="q" value="Organic/Earthy">Organic 
+        <input type="checkbox" name="q" value="Passionate/Sensual">Sensual 
+        <input type="checkbox" name="q" value="Refined/Cerebral">Cerebral 
+        <input type="checkbox" name="q" value="Sad/Longing">Sad 
+        <input type="checkbox" name="q" value="Slick/Smooth">Smooth 
+        <input type="checkbox" name="q" value="Swaggering/Street-Smart">Swaggering 
+        <input type="checkbox" name="q" value="Seasonal">Seasonal 
+        <input type="checkbox" name="q" value="Sweet/Light">Sweet 
+        <input type="checkbox" name="q" value="Trippy/Druggy">Druggy 
+        <input type="checkbox" name="q" value="Upbeat/Boisterous">Upbeat 
+  </div>
+<br></br>
+ <div class="albumtheme">
+
+      <p>Album Theme</p>
+		 <input type="checkbox" name="q" value="At the Office/Monday Morning">Monday Morning
+         <input type="checkbox" name="q" value="Background/Dinner Ambiance">Dinner Ambiance
+         <input type="checkbox" name="q" value="Feelin'Good">Feelin' Good
+         <input type="checkbox" name="q" value="Feelin' Low">Feelin' Low
+         <input type="checkbox" name="q" value="Hangin' Out">Hangin' Out
+         <input type="checkbox" name="q" value="Happy Holidays/New Years">New Years
+         <input type="checkbox" name="q" value="Heartache/Breakup">Breakup
+         <input type="checkbox" name="q" value="Late Night">Late Night
+         <input type="checkbox" name="q" value="Long Walk/Reminiscing">eminiscing
+         <input type="checkbox" name="q" value="Party/Celebration">Party
+         <input type="checkbox" name="q" value="Revolutionary/Creative Side">Creative Side
+		 <input type="checkbox" name="q" value="Seasonal">Seasonal
+         <input type="checkbox" name="q" value="Sweet Dreams/Relaxation">Sweet Dreams
+         <input type="checkbox" name="q" value="Travel/Driving">Travel
+         <input type="checkbox" name="q" value="Wedding/Anniversary">Anniversary
+         <input type="checkbox" name="q" value="With the Family">With the Family 
+ 
+  </div>
+  </div>
+
+
+<br></br>   
+    <br></br>
+    <input class="button" id="search" type='submit' value="Submit" onclick="myFunction7()"/>
+    <input class="button" id="reset" type='reset' value="Reset"/>
+    
+    </form>
+    
+  
+
+</body>
+
+ 
+</html>
