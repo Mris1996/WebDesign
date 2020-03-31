@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="application/html" charset="utf-8">
+
+<html>
+<head>
+<script>
+function load(x){
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+
+    readyStateChangeHandler(xhttp , x);
+    
+  };
+
+
+  xhttp.open("GET", "A3_CtryData_xsd_Sample.xml", true);
+  xhttp.send();
+}
+
+
+function readyStateChangeHandler(xhttp ,x){
+
+  if (xhttp.readyState == 4){
+
+    if(xhttp.status == 200){
+
+		handleStatusSuccess(xhttp ,x);
+
+    }
+	else {
+
+      failed(xhttp);
+
+    }
+	
+	}
+	
+
+}
+
+function failed(xhttp){
+
+ document.getElementById("displayT").innerHTML = "Error!";
+
+}
+
+function parseobj(xml){
+var ctry = {};
+var ctrylist = xml.getElementsByTagName("CountryList")[0];
+var ctryrecord = ctrylist.getElementsByTagName("CountryRecord");
+ctry.ctryrecorditems = [];
+
+for(var i=0; i < ctryrecord.length; i++){
+
+   
+    var ctryrecorditemselements = ctryrecord[i];
+	
+    var ctryrecobj = parsectryrecordelements(ctryrecorditemselements);
+
+    ctry.ctryrecorditems.push(ctryrecobj);
+
+  }
+		return ctry;  
+}
+
+function parsectryrecordelements(ctryrecorditemselements){
+
+  var ctryrecobj = {};
+  
+	ctryrecobj.name = (ctryrecorditemselements.getElementsByTagName("name")[0]).textContent;
+	ctryrecobj.a2 = (ctryrecorditemselements.getElementsByTagName("alpha-2")[0]).textContent;
+	ctryrecobj.a3 = (ctryrecorditemselements.getElementsByTagName("alpha-3")[0]).textContent;
+	ctryrecobj.countrycode = (ctryrecorditemselements.getElementsByTagName("country-code")[0]).textContent;
+	ctryrecobj.iso = (ctryrecorditemselements.getElementsByTagName("iso_3166-2")[0]).textContent;
+	ctryrecobj.region = (ctryrecorditemselements.getElementsByTagName("region")[0]).textContent;
+	ctryrecobj.regioncode = (ctryrecorditemselements.getElementsByTagName("region-code")[0]).textContent;
+	ctryrecobj.subregion = (ctryrecorditemselements.getElementsByTagName("sub-region")[0]).textContent;
+	ctryrecobj.subregioncode = (ctryrecorditemselements.getElementsByTagName("sub-region-code")[0]).textContent;
+	ctryrecobj.intermediateregion = (ctryrecorditemselements.getElementsByTagName("intermediate-region")[0]).textContent;
+	ctryrecobj.intermediateregioncode = (ctryrecorditemselements.getElementsByTagName("intermediate-region-code")[0]).textContent;
+	ctryrecobj.capitalcity = (ctryrecorditemselements.getElementsByTagName("capital-city")[0]).textContent;
+	ctryrecobj.currency = (ctryrecorditemselements.getElementsByTagName("currency")[0]).textContent;
+	ctryrecobj.currencycode = (ctryrecorditemselements.getElementsByTagName("currency-code")[0]).textContent;
+	ctryrecobj.population = (ctryrecorditemselements.getElementsByTagName("population")[0]).textContent;
+
+	
+	  return ctryrecobj;
+}
+
+function handleStatusSuccess(xhttp ,x){
+
+  var xml = xhttp.responseXML;
+
+  var ctry = parseobj(xml);
+
+
+  if(x == "r1")
+  {
+  
+  displayr1(ctry);
+  }
+  if(x == "r2")
+  {
+  displayr2(ctry);
+  }
+  if(x == "c1")
+  {
+  displayc1(ctry);
+  }
+  if(x == "c2")
+  {
+  displayc2(ctry);
+  }
+  if(x == "p1")
+  {
+  displayp1(ctry);
+  }
+  if(x == "p2")
+  {
+  displayp2(ctry);
+  }
+}
+
+function displayr1(ctry) {
+
+	var html = " ";
+	html += "<table border='1'>";
+	html += "<tr><th>Region-Code</th><th>Region</th><th>Sub-Region-Code</th><th>Sub-Region</th><th>Intermediate-Region-Code</th><th>Intermediate-Region</th><th>ISO_3166-2</th><th>Ctry-Code</th><th>Name</th></tr>";
+for(var i=0; i < ctry.ctryrecorditems.length; i++){
+	ctry.ctryrecorditems.sort(function(a, b) 
+			{
+     
+					  if ( a.region < b.region ) {
+						return -1;
+					  }
+					  if ( a.region > b.region ) {
+							
+						return 1;
+					  }
+					 if ( parseInt(a.subregioncode) < parseInt(b.subregioncode) ) {
+						return -1;
+							
+							}
+					  if (  parseInt(a.subregioncode) > parseInt(b.subregioncode) ) {
+							
+						return 1;
+					  }
+					  
+						return 0;
+			});	
+	var ctryrecobj = ctry.ctryrecorditems[i];
+	html += "<tr>";
+	 
+	 html +=  "<td style=text-align:center>"+ctryrecobj.regioncode+"</td>";
+	 html +=  "<td>"+ctryrecobj.region+"</td>";
+	 html +=  "<td  style=text-align:center>"+ctryrecobj.subregioncode+"</td>";
+	 html +=  "<td>"+ctryrecobj.subregion+"</td>";
+  
+	if(ctryrecobj.intermediateregioncode == ""){
+	 html +=  "<td  bgcolor=pink>"+ctryrecobj.intermediateregioncode+"</td>";
+	}
+	else{
+	 html +=  "<td style=text-align:center>"+ctryrecobj.intermediateregioncode+"</td>";
+	}
+	if(ctryrecobj.intermediateregion == ""){
+	 html +=  "<td  bgcolor=pink>"+ctryrecobj.intermediateregion+"</td>";
+	}
+	else{
+	 html +=  "<td>"+ctryrecobj.intermediateregion+"</td>";
+	}
+	html +=  "<td style=text-align:center>" +ctryrecobj.iso+"</td>";
+	html +=  "<td style=text-align:center>" +ctryrecobj.countrycode+"</td>";
+	html +=  "<td>"+ctryrecobj.name+"</td>";
+	
+	html += "</tr>";
+	}
+	html += "</table>";
+	document.getElementById("displayTtext").innerHTML = "Region 1";
+	document.getElementById("displayT").innerHTML = html;
+  }
+  function displayr2(ctry) {
+		var html = " ";
+		html += "<table border='1'>";
+		html += "<tr><th>Region</th><th>Sub-Region</th><th>Intermediate-Region</th><th>Ctry-Code</th><th>Name</th></tr>"
+		for(var i=0; i < ctry.ctryrecorditems.length; i++){
+		ctry.ctryrecorditems.sort(function(a, b) 
+			{
+     
+					  if ( a.region < b.region ) {
+						return -1;
+					  }
+					  if ( a.region > b.region ) {
+							
+						return 1;
+					  }
+					  if ( a.subregion < b.subregion ) {
+						return -1;
+					  }
+					  if ( a.subregion > b.subregion ) {
+							
+						return 1;
+					  }
+					  if ( a.intermediateregion > b.intermediateregion ) {
+						return -1;
+					  }
+					  if ( a.intermediateregion < b.intermediateregion ) {
+							
+						return 1;
+					  }
+					
+					
+					  
+						return 0;
+			});	
+		var ctryrecobj = ctry.ctryrecorditems[i];
+		html += "<tr>";
+		html +=  "<td>"+ctryrecobj.region+"</td>";
+		html +=  "<td>"+ctryrecobj.subregion+"</td>";
+		if(ctryrecobj.intermediateregion == ""){
+		html +=  "<td  bgcolor=pink>"+ctryrecobj.intermediateregion+"</td>";
+		}
+		else{
+		html +=  "<td>"+ctryrecobj.intermediateregion+"</td>";
+		}
+		html +=  "<td style=text-align:center>" +ctryrecobj.countrycode+"</td>";
+		html +=  "<td>"+ctryrecobj.name+"</td>";
+		html += "</tr>";
+		}
+		html += "</table>";
+		document.getElementById("displayTtext").innerHTML = "Region 2";
+		document.getElementById("displayT").innerHTML = html;
+  }
+  function displayc1(ctry) {
+	var html = " ";
+	html += "<table border='2'>";
+	html += "<tr><th>Ctry-code</th><th>Name</th><th>Alpha-2</th><th>Alpha-3</th><th>Capital-City</th>";
+	for(var i=0; i < ctry.ctryrecorditems.length; i++){
+	ctry.ctryrecorditems.sort(function(a, b) 
+			{
+				   if ( a.name < b.name) {
+					return -1;
+				  }
+				  if (a.name > b.name) {
+   
+					return 1;
+					}
+					return 0;
+					}
+					);
+
+	var ctryrecobj = ctry.ctryrecorditems[i];
+	html += "<tr>";
+	 
+	 html +=  "<td style=text-align:center>"+ctryrecobj.countrycode+"</td>";
+	 html += "<td style=text-align:centre>"+ctryrecobj.name +"</td>";
+	 html +=  "<td  style=text-align:center>"+ctryrecobj.a2+"</td>";
+	 html +=  "<td style=text-align:center>"+ctryrecobj.a3+"</td>";
+	 html +=  "<td>"+ctryrecobj.capitalcity+"</td>";
+	
+	html += "</tr>";
+	}
+	html += "</table>";
+	document.getElementById("displayTtext").innerHTML = "Country 1";
+	document.getElementById("displayT").innerHTML = html;
+}
+function displayc2(ctry) {
+	var html = " ";
+	html += "<table border='2'>";
+	html += "<tr><th>Ctry-code</th><th>Name</th><th>Capital-City</th><th>Currency-Code</th><th>Currency</th><th>Population</th>";
+	for(var i=0; i < ctry.ctryrecorditems.length; i++){
+	ctry.ctryrecorditems.sort(function(a, b) 
+			{
+				   if ( a.name < b.name) {
+					return -1;
+				  }
+				  if (a.name > b.name) {
+					return 1;
+				  }
+					return 0;
+					});
+
+	var ctryrecobj = ctry.ctryrecorditems[i];
+	html += "<tr>";
+	 
+	html +=  "<td style=text-align:center>"+ctryrecobj.countrycode+"</td>";
+	html += "<td style=text-align:centre>"+ctryrecobj.name +"</td>";
+	html +=  "<td>"+ctryrecobj.capitalcity+"</td>";
+	html +=  "<td style=text-align:center>"+ctryrecobj.currencycode+"</td>";
+	html +=  "<td>"+ctryrecobj.currency+"</td>";
+	var num = parseInt(ctryrecobj.population);
+	html +=  "<td style=text-align:center>"+ num.toLocaleString();+"</td>";
+	html += "</tr>";
+	}
+	html += "</table>";
+	document.getElementById("displayTtext").innerHTML = "Country 2";
+	document.getElementById("displayT").innerHTML = html;
+}
+   function displayp1(ctry) {
+	var html = " ";
+	html += "<table border='1'>";
+	html += "<tr><th>Ctry-Code</th><th>Name</th><th>Alpha-2</th><th>Alpha-3</th><th>Capital-City</th><th>Currency-Code</th><th>Currecny</th><th>Population</th></tr>"
+	for(var i=0; i < ctry.ctryrecorditems.length; i++){
+		ctry.ctryrecorditems.sort(function(a, b) 
+			{
+					  if (parseInt(a.population) < parseInt(b.population)) {
+						return -1;
+					  }
+					  if (parseInt(a.population) > parseInt(b.population)) {
+							
+						return 1;
+					  }
+					  
+						return 0;
+			});	
+			var ctryrecobj = ctry.ctryrecorditems[i];
+		html += "<tr>";
+		html +=  "<td style=text-align:center>" +ctryrecobj.countrycode+"</td>";
+		html +=  "<td>"+ctryrecobj.name+"</td>";
+		html +=  "<td style=text-align:center>" +ctryrecobj.a2+"</td>";
+		html +=  "<td style=text-align:center>" +ctryrecobj.a3+"</td>";
+		html +=  "<td>"+ctryrecobj.capitalcity+"</td>";
+		html +=  "<td style=text-align:center>" +ctryrecobj.currencycode+"</td>";
+		html +=  "<td style=text-align:center>" +ctryrecobj.currency+"</td>";
+		var num = parseInt(ctryrecobj.population);
+		html += "<td>"+num.toLocaleString();+"</b></td>";
+		
+		html += "</tr>";
+		}
+		html += "</table>";
+		document.getElementById("displayTtext").innerHTML = "Population 1";
+		document.getElementById("displayT").innerHTML = html;
+   }
+   function displayp2(ctry) {
+	var html = " ";
+	html += "<table border='1'>";
+	html += "<tr><th>Ctry-Code</th><th>Name</th><th>Alpha-2</th><th>Alpha-3</th><th>Capital-City</th><th>Currency-Code</th><th>Currecny</th><th>Population</th></tr>"
+	for(var i=0; i < ctry.ctryrecorditems.length; i++){
+		ctry.ctryrecorditems.sort(function(a, b) 
+			{
+					  if (parseInt(a.population) > parseInt(b.population)) {
+						return -1;
+					  }
+					  if (parseInt(a.population) < parseInt(b.population)) {
+							
+						return 1;
+					  }
+					  
+						return 0;
+			});	
+			var ctryrecobj = ctry.ctryrecorditems[i];
+		html += "<tr>";
+		html +=  "<td style=text-align:center>" +ctryrecobj.countrycode+"</td>";
+		html +=  "<td>"+ctryrecobj.name+"</td>";
+		html +=  "<td style=text-align:center>" +ctryrecobj.a2+"</td>";
+		html +=  "<td style=text-align:center>" +ctryrecobj.a3+"</td>";
+		html +=  "<td>"+ctryrecobj.capitalcity+"</td>";
+		html +=  "<td style=text-align:center>" +ctryrecobj.currencycode+"</td>";
+		html +=  "<td style=text-align:center>" +ctryrecobj.currency+"</td>";
+		var num = parseInt(ctryrecobj.population);
+		if(num >= 50000000)
+		{
+		html += "<td style=color:red;><b>"+num.toLocaleString();+"</b></td>";
+		}
+		else
+		{
+		html += "<td>"+num.toLocaleString();+"</td>";
+		}
+		html += "</tr>";
+		}
+		html += "</table>";
+		document.getElementById("displayTtext").innerHTML = "Population 2";
+		document.getElementById("displayT").innerHTML = html;
+   }
+
+
+</script>
+<img  align="middle"src="logo.gif" id="logo">
+<img  align="middle"src="background.jpg" id="background">
+<link rel="stylesheet" href="ajaxcss.css">
+</head>
+<body>
+<h1>IGOR Country Data(AJAX-JSON) Prototype</h1>
+<hr></hr>
+<h2>Retrieving Country Data...</h2>
+<P id="number" style="display:inline">1.</p>&nbsp;&nbsp;<button id="r1" onclick="load(this.id);"> Region Info I(Format:region-fmt-1.xsl) </button><br /><br />
+<P id="number" style="display:inline">2.</p>&nbsp;&nbsp;<button id="r2" onclick="load(this.id);"> Region Info II(Format:region-fmt-2.xsl) </button><br /><br />
+<P id="number" style="display:inline">3.</p>&nbsp;&nbsp;<button id="c1" onclick="load(this.id);"> Country Info I(Format:country-fmt-1.xsl) </button><br /><br />
+<P id="number" style="display:inline">4.</p>&nbsp;&nbsp;<button id="c2" onclick="load(this.id);"> Country Info I(Format:country-fmt-2.xsl) </button><br /><br />
+<P id="number" style="display:inline">5.</p>&nbsp;&nbsp;<button id="p1" onclick="load(this.id);"> Population Info I(Format:population-fmt-1.xsl) </button><br /><br />
+<P id="number" style="display:inline">6.</p>&nbsp;&nbsp;<button id="p2" onclick="load(this.id);"> Population Info II(Format:population-fmt-2.xsl) </button>
+<hr></hr>
+<h1 id="container">Displaying Country Data...</h1>
+
+<p id="displayTtext"></p>
+<p id="displayT"></p>
+</body>
+
+</html>

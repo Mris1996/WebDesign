@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="ajaxcss.css">
+<meta content="utf-8" http-equiv="encoding">
+<img  align="middle"src="background.jpg" id="background">
+<img  align="middle"src="logo.gif" id="logo">
+<html>
+<head>
+<script>
+
+function load(x)  
+{  
+  
+   var request=new XMLHttpRequest();
+   request.onreadystatechange  = function(){  
+    if (request.readyState == 4  )  
+   {  
+		 if (request.status == 200  ) 
+		 {
+		
+        var jsonObj = JSON.parse(request.responseText);//JSON.parse() returns JSON object  
+		var ctry = jsonObj.CountryList;
+		if (x == "r1")
+		{
+			jsonObj.CountryList['CountryRecord'].sort(function(a, b) 
+			{
+     
+					  if ( a["region"] < b["region"] ) {
+						return -1;
+					  }
+					  if ( a["region"] > b["region"] ) {
+							
+						return 1;
+					  }
+					  
+					  if ( parseInt(a["sub-region-code"]) < parseInt(b["sub-region-code"]) ) {
+						return -1;
+					  }
+					  if ( parseInt(a["sub-region-code"]) > parseInt(b["sub-region-code"]) ) {
+							
+						return 1;
+					  }
+
+					  return 0;
+			});	
+			displayr1(ctry);
+		}
+		if (x == "r2")
+		{
+			jsonObj.CountryList['CountryRecord'].sort(function(a, b) 
+			{
+     
+					  if ( a["region"] < b["region"]) {
+						return -1;
+					  }
+					  if ( a["region"] > b["region"] ) {
+							
+						return 1;
+					  }
+					  
+					  if ( a["sub-region"] < b["sub-region"]) {
+						return -1;
+					  }
+					  if ( a["sub-region"] > b["sub-region"]) {
+							
+						return 1;
+					  }
+					  
+					  if ( a["intermediate-region"] > b["intermediate-region"]) {
+						return -1;
+					  }
+					  if ( a["intermediate-region"] < b["intermediate-region"] ) {
+							
+						return 1;
+					  }
+					  
+					  return 0;
+			});	
+			displayr2(ctry);
+		}
+		if (x == "c1")
+		{
+			jsonObj.CountryList['CountryRecord'].sort(function(a, b) 
+			{
+     
+					  if ( a["name"] < b["name"]) {
+						return -1;
+					  }
+					  if ( a["name"] > b["name"] ) {
+							
+						return 1;
+					  }
+					  
+					  
+					  return 0;
+			});	
+			displayc1(ctry);
+		}
+			if (x == "c2")
+		{
+			jsonObj.CountryList['CountryRecord'].sort(function(a, b) 
+			{
+     
+					  if ( a["name"] < b["name"]) {
+						return -1;
+					  }
+					  if ( a["name"] > b["name"] ) {
+							
+						return 1;
+					  }
+					  
+					  
+					  return 0;
+			});	
+			displayc2(ctry);
+		}
+		if (x == "p1")
+		{
+			jsonObj.CountryList['CountryRecord'].sort(function(a, b) 
+			{
+     
+					  if (  parseInt(a["population"]) < parseInt(b["population"]) ) {
+						return -1;
+					  }
+					  if ( parseInt(a["population"]) > parseInt(b["population"]) ) {
+							
+						return 1;
+					  }
+					  
+					  
+					  return 0;
+			});	
+			displayp1(ctry);
+		}
+		if (x == "p2")
+		{
+			jsonObj.CountryList['CountryRecord'].sort(function(a, b) 
+			{
+     
+					  if ( parseInt(a["population"]) > parseInt(b["population"]) ) {
+						return -1;
+					  }
+					  if ( parseInt(a["population"]) < parseInt(b["population"]) ) {
+							
+						return 1;
+					  }
+					  
+					  
+					  return 0;
+			});	
+			displayp2(ctry);
+		}
+		}
+		else{
+      // status is NOT OK
+
+      failed(request);
+	
+		}   
+	
+		 
+		}
+			
+      }  
+	request.open("GET", "A3_CtryData_Sample.json", true);  
+	request.send(); 	  
+   } 
+   
+function failed(request){
+
+ document.getElementById("displayT").innerHTML = "Error!";
+
+}
+function displayr1(ctry){
+  var html = "";
+  html += "<table border='1'>";
+  html += "<tr><th>Region-Code</th><th>Region</th><th>Sub-Region-Code</th><th>Sub-Region</th><th>Intermediate-Region-Code</th><th>Intermediate-Region</th><th>ISO_3166-2</th><th>Ctry-Code</th><th>Name</th></tr>";
+		
+  for(var i=0; i < ctry.CountryRecord.length; i++){
+	
+			
+	 var obj = ctry.CountryRecord[i];
+	
+	
+	html += "<tr>";
+	html += "<td style=text-align:center>"+obj["region-code"]+"</td>";
+	html += "<td>"+obj["region"]+"</td>";
+	html += "<td style=text-align:center>"+obj["sub-region-code"]+"</td>";
+	html += "<td>"+obj["sub-region"]+"</td>";
+	
+	if(obj["intermediate-region-code"] == null){
+	html += "<td bgcolor=pink>"+" "+"</td>";
+	}
+	else{
+	html += "<td style=text-align:center>"+obj["intermediate-region-code"]+"</td>";
+	}
+
+	if(obj["intermediate-region"] == null){
+	html += "<td bgcolor=pink>"+" "+"</td>";
+	}
+	else{
+	html += "<td>"+obj["intermediate-region"]+"</td>";
+	}
+	
+	html += "<td>"+obj["iso_3166-2"]+"</td>";
+	html += "<td style=text-align:center>"+obj["country-code"]+"</td>";
+	html += "<td>"+obj["name"]+"</td>";
+	html +="</tr>";
+  
+  }
+	html += "</table>";
+  
+ document.getElementById("displayT").innerHTML = html;
+  document.getElementById("displayTtext").innerHTML = "Region 1";
+}
+function displayr2(ctry){
+  var html = "";
+  html += "<table border='1'>";
+  html += "<tr><th>Region</th><th>Sub-Region</th><th>Intermediate-Region</th><th>Ctry-Code</th><th>Name</th></tr>";
+		
+  for(var i=0; i < ctry.CountryRecord.length; i++){
+	
+			
+	 var obj = ctry.CountryRecord[i];
+	
+	
+	html += "<tr>";
+	html += "<td>"+obj["region"]+"</td>";
+	html += "<td>"+obj["sub-region"]+"</td>";
+	if(obj["intermediate-region"] == null){
+	html += "<td bgcolor=pink>"+" "+"</td>";
+	}
+	else{
+	html += "<td>"+obj["intermediate-region"]+"</td>";
+	}
+	html += "<td style=text-align:center>"+obj["country-code"]+"</td>";
+	html += "<td>"+obj["name"]+"</td>";
+	html +="</tr>";
+  
+  }
+	html += "</table>";
+  
+  document.getElementById("displayT").innerHTML = html;
+  document.getElementById("displayTtext").innerHTML = "Region 2";
+}
+
+function displayc1(ctry){
+  var html = "";
+  html += "<table border='1'>";
+  html += "<tr><th>Ctry-Code</th><th>Name</th><th>Alpha-2</th><th>Alpha-3</th><th>Capital-City</th></tr>";
+		
+  for(var i=0; i < ctry.CountryRecord.length; i++){
+	
+			
+	 var obj = ctry.CountryRecord[i];
+	
+	
+	html += "<tr>";
+	html += "<td style=text-align:center>"+obj["country-code"]+"</td>";
+	html += "<td>"+obj["name"]+"</td>";
+	html += "<td style=text-align:center>"+obj["alpha-2"]+"</td>";
+	html += "<td style=text-align:center>"+obj["alpha-3"]+"</td>";
+	html += "<td>"+obj["capital-city"]+"</td>";
+	html +="</tr>";
+  
+  }
+	html += "</table>";
+  document.getElementById("displayTtext").innerHTML = "Country 1";
+  document.getElementById("displayT").innerHTML = html;
+}
+
+function displayc2(ctry){
+  var html = "";
+  html += "<table border='1'>";
+  html += "<tr><th>Ctry-Code</th><th>Name</th><th>Capital-City</th><th>Currency-Code</th><th>Currency</th><th>Population</th></tr>";
+		
+  for(var i=0; i < ctry.CountryRecord.length; i++){
+	
+			
+	 var obj = ctry.CountryRecord[i];
+		var num = parseInt(obj["population"]);
+	
+	html += "<tr>";
+	html += "<td style=text-align:center>"+obj["country-code"]+"</td>";
+	html += "<td>"+obj["name"]+"</td>";
+	html += "<td>"+obj["capital-city"]+"</td>";
+	html += "<td style=text-align:center>"+obj["currency-code"]+"</td>";
+	html += "<td  style=text-align:center>"+obj["currency"]+"</td>";
+	html += "<td>"+num.toLocaleString();+"</td>";
+	html +="</tr>";
+  
+  }
+	html += "</table>";
+  
+  document.getElementById("displayT").innerHTML = html;
+   document.getElementById("displayTtext").innerHTML = "Country 2";
+}
+
+function displayp1(ctry){
+  var html = "";
+  html += "<table border='1'>";
+  html += "<tr><th>Ctry-Code</th><th>Name</th><th>Alpha-2</th><th>Alpha-3</th><th>Capital-City</th><th>Currency-Code</th><th>Currency</th><th>Population</th></tr>";
+		
+  for(var i=0; i < ctry.CountryRecord.length; i++){
+	
+			
+	 var obj = ctry.CountryRecord[i];
+		var num = parseInt(obj["population"]);
+	
+	html += "<tr>";
+	html += "<td style=text-align:center>"+obj["country-code"]+"</td>";
+	html += "<td>"+obj["name"]+"</td>";
+	html += "<td style=text-align:center>"+obj["alpha-2"]+"</td>";
+	html += "<td style=text-align:center>"+obj["alpha-3"]+"</td>";
+	html += "<td>"+obj["capital-city"]+"</td>";
+	html += "<td style=text-align:center>"+obj["currency-code"]+"</td>";
+	html += "<td style=text-align:center>"+obj["currency"]+"</td>";
+	html += "<td>"+num.toLocaleString();+"</td>";
+	html +="</tr>";
+  
+  }
+	html += "</table>";
+  
+  document.getElementById("displayT").innerHTML = html;
+     document.getElementById("displayTtext").innerHTML = "Population 1";
+}
+
+function displayp2(ctry){
+  var html = "";
+  html += "<table border='1'>";
+  html += "<tr><th>Ctry-Code</th><th>Name</th><th>Alpha-2</th><th>Alpha-3</th><th>Capital-City</th><th>Currency-Code</th><th>Currency</th><th>Population</th></tr>";
+		
+  for(var i=0; i < ctry.CountryRecord.length; i++){
+	
+			
+	 var obj = ctry.CountryRecord[i];
+		var num = parseInt(obj["population"]);
+	
+	html += "<tr>";
+	html += "<td style=text-align:center>"+obj["country-code"]+"</td>";
+	html += "<td>"+obj["name"]+"</td>";
+	html += "<td style=text-align:center>"+obj["alpha-2"]+"</td>";
+	html += "<td style=text-align:center>"+obj["alpha-3"]+"</td>";
+	html += "<td>"+obj["capital-city"]+"</td>";
+	html += "<td style=text-align:center>"+obj["currency-code"]+"</td>";
+	html += "<td style=text-align:center>"+obj["currency"]+"</td>";
+	if(num >= 50000000)
+	{
+	html += "<td style=color:red;><b>"+num.toLocaleString();+"</b></td>";
+	}
+	else
+	{
+	html += "<td>"+num.toLocaleString();+"</td>";
+	}
+	html +="</tr>";
+  
+  }
+	html += "</table>";
+  
+   document.getElementById("displayT").innerHTML = html;
+   document.getElementById("displayTtext").innerHTML = "Population 2";
+}
+       
+ 
+
+</script>
+
+</head>
+<body>
+<h1>IGOR Country Data(AJAX-JSON) Prototype</h1>
+<hr></hr>
+<h2>Retrieving Country Data...</h2>
+<P id="number" style="display:inline">1.</p>&nbsp;&nbsp;<button id="r1" onclick="load(this.id);"> Region Info I(Format:region-fmt-1.xsl) </button><br /><br />
+<P id="number" style="display:inline">2.</p>&nbsp;&nbsp;<button id="r2" onclick="load(this.id);"> Region Info II(Format:region-fmt-2.xsl) </button><br /><br />
+<P id="number" style="display:inline">3.</p>&nbsp;&nbsp;<button id="c1" onclick="load(this.id);"> Country Info I(Format:country-fmt-1.xsl) </button><br /><br />
+<P id="number" style="display:inline">4.</p>&nbsp;&nbsp;<button id="c2" onclick="load(this.id);"> Country Info I(Format:country-fmt-2.xsl) </button><br /><br />
+<P id="number" style="display:inline">5.</p>&nbsp;&nbsp;<button id="p1" onclick="load(this.id);"> Population Info I(Format:population-fmt-1.xsl) </button><br /><br />
+<P id="number" style="display:inline">6.</p>&nbsp;&nbsp;<button id="p2" onclick="load(this.id);"> Population Info II(Format:population-fmt-2.xsl) </button>
+<hr></hr>
+<h1 id="container">Displaying Country Data...</h1>
+
+<p id="displayTtext"></p>
+<p id="displayT"></p>
+
+</body>
+</html>

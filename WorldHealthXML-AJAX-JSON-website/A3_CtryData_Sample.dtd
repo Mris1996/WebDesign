@@ -1,0 +1,53 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT CountryList (CountryRecord)+>
+<!ATTLIST CountryList xmlns CDATA #FIXED ''>
+
+<!ELEMENT CountryRecord (name,alpha-2,alpha-3,country-code,iso_3166-2,region,sub-region,intermediate-region,region-code,sub-region-code,intermediate-region-code,capital-city,currency,currency-code,population)>
+
+<!ATTLIST CountryRecord xmlns CDATA #FIXED ''>
+
+<!ELEMENT name (#PCDATA)>
+<!ATTLIST name xmlns CDATA #FIXED ''>
+
+<!ELEMENT alpha-2 (#PCDATA)>
+<!ATTLIST alpha-2 xmlns CDATA #FIXED ''>
+
+<!ELEMENT alpha-3 (#PCDATA)>
+<!ATTLIST alpha-3 xmlns CDATA #FIXED ''>
+
+<!ELEMENT country-code (#PCDATA)>
+<!ATTLIST country-code xmlns CDATA #FIXED ''>
+
+<!ELEMENT iso_3166-2 (#PCDATA)>
+<!ATTLIST iso_3166-2 xmlns CDATA #FIXED ''>
+
+<!ELEMENT region (#PCDATA)>
+<!ATTLIST region xmlns CDATA #FIXED ''>
+
+<!ELEMENT sub-region (#PCDATA)>
+<!ATTLIST sub-region xmlns CDATA #FIXED ''>
+
+<!ELEMENT intermediate-region (#PCDATA)>
+<!ATTLIST intermediate-region xmlns CDATA #FIXED ''>
+
+<!ELEMENT region-code (#PCDATA)>
+<!ATTLIST region-code xmlns CDATA #FIXED ''>
+
+<!ELEMENT sub-region-code (#PCDATA)>
+<!ATTLIST sub-region-code xmlns CDATA #FIXED ''>
+
+<!ELEMENT intermediate-region-code (#PCDATA)>
+<!ATTLIST intermediate-region-code xmlns CDATA #FIXED ''>
+
+<!ELEMENT capital-city (#PCDATA)>
+<!ATTLIST capital-city xmlns CDATA #FIXED ''>
+
+<!ELEMENT currency (#PCDATA)>
+<!ATTLIST currency xmlns CDATA #FIXED ''>
+
+<!ELEMENT currency-code (#PCDATA)>
+<!ATTLIST currency-code xmlns CDATA #FIXED ''>
+
+<!ELEMENT population (#PCDATA)>
+<!ATTLIST population xmlns CDATA #FIXED ''>

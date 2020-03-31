@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+<xsd:element name="CountryRecord">
+	<xsd:complexType>
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string"/>
+			<xsd:element name="alpha-2" type="xsd:string"/>
+			<xsd:element name="alpha-3" type="xsd:string"/>
+			<xsd:element name="country-code" type="xsd:string"/>
+			<xsd:element name="iso_3166-2" type="xsd:string"/>
+			<xsd:element name="region" type="xsd:string"/>
+			<xsd:element name="sub-region" type="xsd:string"/>
+			<xsd:element name="intermediate-region" type="xsd:string"/>
+			<xsd:element name="region-code" type="xsd:integer"/>
+			<xsd:element name="sub-region-code" type="xsd:integer"/>
+			<xsd:element name="intermediate-region-code" type="xsd:string"/>
+			<xsd:element name="capital-city" type="xsd:string"/>
+			<xsd:element name="currency" type="xsd:string"/>
+			<xsd:element name="currency-code" type="xsd:string"/>
+			<xsd:element name="population" type="xsd:integer"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:element>
+
+
+ <xsd:element name="CountryList">
+   <xsd:complexType>
+     <xsd:sequence>
+       <xsd:element ref="CountryRecord" minOccurs="0" maxOccurs="unbounded"/>
+     </xsd:sequence>
+   </xsd:complexType>
+ </xsd:element>
+ 
+</xsd:schema>
+
+
+
+
+
+  

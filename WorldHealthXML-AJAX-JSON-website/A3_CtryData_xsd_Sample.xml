@@ -1,0 +1,418 @@
+<?xml version="1.0" ?>
+<CountryList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="A3_CtryData_Sample.xsd">
+
+  <CountryRecord>
+    <name>Afghanistan</name>
+    <alpha-2>AF</alpha-2>
+    <alpha-3>AFG</alpha-3>
+    <country-code>4</country-code>
+    <iso_3166-2>ISO 3166-2:AF</iso_3166-2>
+    <region>Asia</region>
+    <sub-region>Southern Asia</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>142</region-code>
+    <sub-region-code>34</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Kabul</capital-city>
+    <currency>Afghani</currency>
+    <currency-code>AFA</currency-code>
+    <population>26813057</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Australia</name>
+    <alpha-2>AU</alpha-2>
+    <alpha-3>AUS</alpha-3>
+    <country-code>36</country-code>
+    <iso_3166-2>ISO 3166-2:AU</iso_3166-2>
+    <region>Oceania</region>
+    <sub-region>Australia and New Zealand</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>9</region-code>
+    <sub-region-code>53</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Canberra</capital-city>
+    <currency>Australian dollar</currency>
+    <currency-code>AUD</currency-code>
+    <population>19357594</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Bolivia (Plurinational State of)</name>
+    <alpha-2>BO</alpha-2>
+    <alpha-3>BOL</alpha-3>
+    <country-code>68</country-code>
+    <iso_3166-2>ISO 3166-2:BO</iso_3166-2>
+    <region>Americas</region>
+    <sub-region>Latin America and the Caribbean</sub-region>
+    <intermediate-region>South America</intermediate-region>
+    <region-code>19</region-code>
+    <sub-region-code>419</sub-region-code>
+    <intermediate-region-code>5</intermediate-region-code>
+    <capital-city>La Paz /Sucre</capital-city>
+    <currency>Boliviano</currency>
+    <currency-code>BOB</currency-code>
+    <population>8300463</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Bulgaria</name>
+    <alpha-2>BG</alpha-2>
+    <alpha-3>BGR</alpha-3>
+    <country-code>100</country-code>
+    <iso_3166-2>ISO 3166-2:BG</iso_3166-2>
+    <region>Europe</region>
+    <sub-region>Eastern Europe</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>150</region-code>
+    <sub-region-code>151</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Sofia</capital-city>
+    <currency>Lev</currency>
+    <currency-code>BGL</currency-code>
+    <population>7707495</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Sri Lanka</name>
+    <alpha-2>LK</alpha-2>
+    <alpha-3>LKA</alpha-3>
+    <country-code>144</country-code>
+    <iso_3166-2>ISO 3166-2:LK</iso_3166-2>
+    <region>Asia</region>
+    <sub-region>Southern Asia</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>142</region-code>
+    <sub-region-code>34</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Colombo</capital-city>
+    <currency>Sri Lanka Rupee</currency>
+    <currency-code>LKR</currency-code>
+    <population>19408635</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Costa Rica</name>
+    <alpha-2>CR</alpha-2>
+    <alpha-3>CRI</alpha-3>
+    <country-code>188</country-code>
+    <iso_3166-2>ISO 3166-2:CR</iso_3166-2>
+    <region>Americas</region>
+    <sub-region>Latin America and the Caribbean</sub-region>
+    <intermediate-region>Central America</intermediate-region>
+    <region-code>19</region-code>
+    <sub-region-code>419</sub-region-code>
+    <intermediate-region-code>13</intermediate-region-code>
+    <capital-city>San Jose</capital-city>
+    <currency>Costa Rican Colon</currency>
+    <currency-code>CRC</currency-code>
+    <population>3773057</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>El Salvador</name>
+    <alpha-2>SV</alpha-2>
+    <alpha-3>SLV</alpha-3>
+    <country-code>222</country-code>
+    <iso_3166-2>ISO 3166-2:SV</iso_3166-2>
+    <region>Americas</region>
+    <sub-region>Latin America and the Caribbean</sub-region>
+    <intermediate-region>Central America</intermediate-region>
+    <region-code>19</region-code>
+    <sub-region-code>419</sub-region-code>
+    <intermediate-region-code>13</intermediate-region-code>
+    <capital-city>San Salvador</capital-city>
+    <currency>El Salvador Colon</currency>
+    <currency-code>SVC</currency-code>
+    <population>6237662</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>France</name>
+    <alpha-2>FR</alpha-2>
+    <alpha-3>FRA</alpha-3>
+    <country-code>250</country-code>
+    <iso_3166-2>ISO 3166-2:FR</iso_3166-2>
+    <region>Europe</region>
+    <sub-region>Western Europe</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>150</region-code>
+    <sub-region-code>155</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Paris</capital-city>
+    <currency>Euro</currency>
+    <currency-code>EUR</currency-code>
+    <population>59551227</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Gibraltar</name>
+    <alpha-2>GI</alpha-2>
+    <alpha-3>GIB</alpha-3>
+    <country-code>292</country-code>
+    <iso_3166-2>ISO 3166-2:GI</iso_3166-2>
+    <region>Europe</region>
+    <sub-region>Southern Europe</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>150</region-code>
+    <sub-region-code>39</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Gibraltar</capital-city>
+    <currency>Gibraltar Pound</currency>
+    <currency-code>GIP</currency-code>
+    <population>27649</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Haiti</name>
+    <alpha-2>HT</alpha-2>
+    <alpha-3>HTI</alpha-3>
+    <country-code>332</country-code>
+    <iso_3166-2>ISO 3166-2:HT</iso_3166-2>
+    <region>Americas</region>
+    <sub-region>Latin America and the Caribbean</sub-region>
+    <intermediate-region>Caribbean</intermediate-region>
+    <region-code>19</region-code>
+    <sub-region-code>419</sub-region-code>
+    <intermediate-region-code>29</intermediate-region-code>
+    <capital-city>Port-au-Prince</capital-city>
+    <currency>Gourde</currency>
+    <currency-code>HTG</currency-code>
+    <population>6964549</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Iraq</name>
+    <alpha-2>IQ</alpha-2>
+    <alpha-3>IRQ</alpha-3>
+    <country-code>368</country-code>
+    <iso_3166-2>ISO 3166-2:IQ</iso_3166-2>
+    <region>Asia</region>
+    <sub-region>Western Asia</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>142</region-code>
+    <sub-region-code>145</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Baghdad</capital-city>
+    <currency>Iraqi Dinar</currency>
+    <currency-code>IQD</currency-code>
+    <population>23331985</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Korea (Democratic People&apos;s Republic of)</name>
+    <alpha-2>KP</alpha-2>
+    <alpha-3>PRK</alpha-3>
+    <country-code>408</country-code>
+    <iso_3166-2>ISO 3166-2:KP</iso_3166-2>
+    <region>Asia</region>
+    <sub-region>Eastern Asia</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>142</region-code>
+    <sub-region-code>30</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Pyongyang</capital-city>
+    <currency>North Korean Won</currency>
+    <currency-code>KPW</currency-code>
+    <population>21968228</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Liechtenstein</name>
+    <alpha-2>LI</alpha-2>
+    <alpha-3>LIE</alpha-3>
+    <country-code>438</country-code>
+    <iso_3166-2>ISO 3166-2:LI</iso_3166-2>
+    <region>Europe</region>
+    <sub-region>Western Europe</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>150</region-code>
+    <sub-region-code>155</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Vaduz</capital-city>
+    <currency>Swiss Franc</currency>
+    <currency-code>CHF</currency-code>
+    <population>32528</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Martinique</name>
+    <alpha-2>MQ</alpha-2>
+    <alpha-3>MTQ</alpha-3>
+    <country-code>474</country-code>
+    <iso_3166-2>ISO 3166-2:MQ</iso_3166-2>
+    <region>Americas</region>
+    <sub-region>Latin America and the Caribbean</sub-region>
+    <intermediate-region>Caribbean</intermediate-region>
+    <region-code>19</region-code>
+    <sub-region-code>419</sub-region-code>
+    <intermediate-region-code>29</intermediate-region-code>
+    <capital-city>Fort-de-France</capital-city>
+    <currency>Euro</currency>
+    <currency-code>EUR</currency-code>
+    <population>418454</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Oman</name>
+    <alpha-2>OM</alpha-2>
+    <alpha-3>OMN</alpha-3>
+    <country-code>512</country-code>
+    <iso_3166-2>ISO 3166-2:OM</iso_3166-2>
+    <region>Asia</region>
+    <sub-region>Western Asia</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>142</region-code>
+    <sub-region-code>145</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Muscat</capital-city>
+    <currency>Rial Omani</currency>
+    <currency-code>OMR</currency-code>
+    <population>2622198</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Niger</name>
+    <alpha-2>NE</alpha-2>
+    <alpha-3>NER</alpha-3>
+    <country-code>562</country-code>
+    <iso_3166-2>ISO 3166-2:NE</iso_3166-2>
+    <region>Africa</region>
+    <sub-region>Sub-Saharan Africa</sub-region>
+    <intermediate-region>Western Africa</intermediate-region>
+    <region-code>2</region-code>
+    <sub-region-code>202</sub-region-code>
+    <intermediate-region-code>11</intermediate-region-code>
+    <capital-city>Niamey</capital-city>
+    <currency>CFA Franc BCEAO</currency>
+    <currency-code>XOF</currency-code>
+    <population>10355156</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Panama</name>
+    <alpha-2>PA</alpha-2>
+    <alpha-3>PAN</alpha-3>
+    <country-code>591</country-code>
+    <iso_3166-2>ISO 3166-2:PA</iso_3166-2>
+    <region>Americas</region>
+    <sub-region>Latin America and the Caribbean</sub-region>
+    <intermediate-region>Central America</intermediate-region>
+    <region-code>19</region-code>
+    <sub-region-code>419</sub-region-code>
+    <intermediate-region-code>13</intermediate-region-code>
+    <capital-city>Panama</capital-city>
+    <currency>balboa</currency>
+    <currency-code>PAB</currency-code>
+    <population>2845647</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Qatar</name>
+    <alpha-2>QA</alpha-2>
+    <alpha-3>QAT</alpha-3>
+    <country-code>634</country-code>
+    <iso_3166-2>ISO 3166-2:QA</iso_3166-2>
+    <region>Asia</region>
+    <sub-region>Western Asia</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>142</region-code>
+    <sub-region-code>145</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Doha</capital-city>
+    <currency>Qatari Rial</currency>
+    <currency-code>QAR</currency-code>
+    <population>769152</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>San Marino</name>
+    <alpha-2>SM</alpha-2>
+    <alpha-3>SMR</alpha-3>
+    <country-code>674</country-code>
+    <iso_3166-2>ISO 3166-2:SM</iso_3166-2>
+    <region>Europe</region>
+    <sub-region>Southern Europe</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>150</region-code>
+    <sub-region-code>39</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>San Marino</capital-city>
+    <currency>Euro</currency>
+    <currency-code>EUR</currency-code>
+    <population>27336</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>South Africa</name>
+    <alpha-2>ZA</alpha-2>
+    <alpha-3>ZAF</alpha-3>
+    <country-code>710</country-code>
+    <iso_3166-2>ISO 3166-2:ZA</iso_3166-2>
+    <region>Africa</region>
+    <sub-region>Sub-Saharan Africa</sub-region>
+    <intermediate-region>Southern Africa</intermediate-region>
+    <region-code>2</region-code>
+    <sub-region-code>202</sub-region-code>
+    <intermediate-region-code>18</intermediate-region-code>
+    <capital-city>Pretoria</capital-city>
+    <currency>Rand</currency>
+    <currency-code>ZAR</currency-code>
+    <population>43586097</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Tajikistan</name>
+    <alpha-2>TJ</alpha-2>
+    <alpha-3>TJK</alpha-3>
+    <country-code>762</country-code>
+    <iso_3166-2>ISO 3166-2:TJ</iso_3166-2>
+    <region>Asia</region>
+    <sub-region>Central Asia</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>142</region-code>
+    <sub-region-code>143</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Dushanbe</capital-city>
+    <currency>Somoni</currency>
+    <currency-code>TJS</currency-code>
+    <population>6578681</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Turks and Caicos Islands</name>
+    <alpha-2>TC</alpha-2>
+    <alpha-3>TCA</alpha-3>
+    <country-code>796</country-code>
+    <iso_3166-2>ISO 3166-2:TC</iso_3166-2>
+    <region>Americas</region>
+    <sub-region>Latin America and the Caribbean</sub-region>
+    <intermediate-region>Caribbean</intermediate-region>
+    <region-code>19</region-code>
+    <sub-region-code>419</sub-region-code>
+    <intermediate-region-code>29</intermediate-region-code>
+    <capital-city>Cockburn Town</capital-city>
+    <currency>US Dollar</currency>
+    <currency-code>USD</currency-code>
+    <population>18122</population>
+  </CountryRecord>
+  
+  <CountryRecord>
+    <name>Uzbekistan</name>
+    <alpha-2>UZ</alpha-2>
+    <alpha-3>UZB</alpha-3>
+    <country-code>860</country-code>
+    <iso_3166-2>ISO 3166-2:UZ</iso_3166-2>
+    <region>Asia</region>
+    <sub-region>Central Asia</sub-region>
+    <intermediate-region></intermediate-region>
+    <region-code>142</region-code>
+    <sub-region-code>143</sub-region-code>
+    <intermediate-region-code></intermediate-region-code>
+    <capital-city>Tashkent</capital-city>
+    <currency>Uzbekistan Sum</currency>
+    <currency-code>UZS</currency-code>
+    <population>25155064</population>
+  </CountryRecord>
+  
+</CountryList>

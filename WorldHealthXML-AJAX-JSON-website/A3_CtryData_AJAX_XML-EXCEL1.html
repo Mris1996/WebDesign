@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="application/html" charset="utf-8">
+
+<html>
+<head>
+<link rel="stylesheet" href="ajaxcss.css">
+
+<img  align="middle"src="background.jpg" id="background">
+<img  align="middle"src="logo.gif" id="logo">
+
+<script>
+
+
+function load(){
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+    readyStateChangeHandler(xhttp);
+    
+  };
+
+  xhttp.open("GET", "A3_CtryData_xsd_Sample.xml", true);
+  xhttp.send();
+}
+
+
+function readyStateChangeHandler(xhttp ,x){
+
+  if (xhttp.readyState == 4){
+   
+
+    if(xhttp.status == 200){
+
+		
+		handleStatusSuccess(xhttp ,x);
+
+    }
+  }
+
+}
+function parseobj(xml){
+var ctry = {};
+var ctrylist = xml.getElementsByTagName("CountryList")[0];
+var ctryrecord = ctrylist.getElementsByTagName("CountryRecord");
+ctry.ctryrecorditems = [];
+
+for(var i=0; i < ctryrecord.length; i++){
+
+   
+    var ctryrecorditemselements = ctryrecord[i];
+	
+    var ctryrecobj = parsectryrecordelements(ctryrecorditemselements);
+
+    ctry.ctryrecorditems.push(ctryrecobj);
+
+  }
+		return ctry;  
+}
+
+function parsectryrecordelements(ctryrecorditemselements){
+
+  var ctryrecobj = {};
+  
+	ctryrecobj.name = (ctryrecorditemselements.getElementsByTagName("name")[0]).textContent;
+	ctryrecobj.a2 = (ctryrecorditemselements.getElementsByTagName("alpha-2")[0]).textContent;
+	ctryrecobj.a3 = (ctryrecorditemselements.getElementsByTagName("alpha-3")[0]).textContent;
+	ctryrecobj.countrycode = (ctryrecorditemselements.getElementsByTagName("country-code")[0]).textContent;
+	ctryrecobj.iso = (ctryrecorditemselements.getElementsByTagName("iso_3166-2")[0]).textContent;
+	ctryrecobj.region = (ctryrecorditemselements.getElementsByTagName("region")[0]).textContent;
+	ctryrecobj.regioncode = (ctryrecorditemselements.getElementsByTagName("region-code")[0]).textContent;
+	ctryrecobj.subregion = (ctryrecorditemselements.getElementsByTagName("sub-region")[0]).textContent;
+	ctryrecobj.subregioncode = (ctryrecorditemselements.getElementsByTagName("sub-region-code")[0]).textContent;
+	ctryrecobj.intermediateregion = (ctryrecorditemselements.getElementsByTagName("intermediate-region")[0]).textContent;
+	ctryrecobj.intermediateregioncode = (ctryrecorditemselements.getElementsByTagName("intermediate-region-code")[0]).textContent;
+	ctryrecobj.capitalcity = (ctryrecorditemselements.getElementsByTagName("capital-city")[0]).textContent;
+	ctryrecobj.currency = (ctryrecorditemselements.getElementsByTagName("currency")[0]).textContent;
+	ctryrecobj.currencycode = (ctryrecorditemselements.getElementsByTagName("currency-code")[0]).textContent;
+	ctryrecobj.population = (ctryrecorditemselements.getElementsByTagName("population")[0]).textContent;
+	var num = parseInt(ctryrecobj.population);
+	console.log(num);
+	
+	  return ctryrecobj;
+}
+
+function handleStatusSuccess(xhttp){
+
+  var xml = xhttp.responseXML;
+
+  var ctry = parseobj(xml);
+
+  displaytable(ctry);
+  
+  
+}
+
+function displaytable(ctry) {
+	
+	
+	var html = " ";
+	html += "<table border='2' id=sortable>";
+	if( document.getElementById("name").checked){
+	html +=  "<th>Name</th>";
+	}
+	if( document.getElementById("alpha-2").checked){
+	html +=  "<th>Alpha-2</th>";
+	}
+	if( document.getElementById("alpha-3").checked){
+	html +=  "<th>Alpha-3</th>";
+	}
+	if( document.getElementById("country-code").checked){
+	html +=  "<th>Country-Code</th>";
+	}
+	if( document.getElementById("iso_3166-2").checked){
+	html +=  "<th>ISO_3166-2</th>";
+	}
+	if( document.getElementById("region").checked){
+	html +=  "<th>Region</th>";
+	}
+	if( document.getElementById("sub-region").checked){
+	html +=  "<th>Sub-Region</th>";
+	}
+	if( document.getElementById("intermediate-region").checked){
+	html +=  "<th>Intermediate-Region</th>";
+	}
+	if( document.getElementById("region-code").checked){
+	html +=  "<th>Region-Code</th>";
+	}
+	if( document.getElementById("sub-region-code").checked){
+	html +=  "<th>Sub-Region-Code</th>";
+	}
+	if( document.getElementById("intermediate-region-code").checked){
+	html +=  "<th>Intermediate-Region-Code</th>";
+	}
+	if( document.getElementById("captial-city").checked){
+	html +=  "<th>Captial-City</th>";
+	}
+	if( document.getElementById("currency").checked){
+	html +=  "<th>Currency</th>";
+	}
+	if( document.getElementById("currency-code").checked){
+	html +=  "<th>Currency-Code</th>";
+	}
+	if( document.getElementById("population").checked){
+	html +=  "<th>Population</th>";
+	}
+	
+	for(var i=0; i < ctry.ctryrecorditems.length; i++){
+	var ctryrecobj = ctry.ctryrecorditems[i];
+	html += "<tr>";
+	if( document.getElementById("name").checked){
+	html +=  "<td>"+ctryrecobj.name+"</td>";
+	}
+	if( document.getElementById("alpha-2").checked){
+	html +=  "<td style=text-align:center>"+ctryrecobj.a2+"</td>";
+	}
+	if( document.getElementById("alpha-3").checked){
+	html +=  "<td style=text-align:center>"+ctryrecobj.a3+"</td>";
+	}
+	if( document.getElementById("country-code").checked){
+	html += "<td style=text-align:center>"+ctryrecobj.countrycode+"</td>";
+	}
+	if( document.getElementById("iso_3166-2").checked){
+	html +=  "<td style=text-align:center>"+ctryrecobj.iso+"</td>";
+	}
+	if( document.getElementById("region").checked){
+	html +=  "<td>"+ctryrecobj.region+"</td>";
+	}
+	if( document.getElementById("sub-region").checked){
+	html +=  "<td>"+ctryrecobj.subregion+"</td>";
+	}
+	if( document.getElementById("intermediate-region").checked){
+		if(ctryrecobj.intermediateregion == ""){
+			html +=  "<td  bgcolor=pink>"+ctryrecobj.intermediateregion+"</td>";
+		}
+		else{
+			html +=  "<td>"+ctryrecobj.intermediateregion+"</td>";
+		}
+	}
+	if( document.getElementById("region-code").checked){
+	html +=  "<td style=text-align:center>"+ctryrecobj.regioncode+"</td>";
+	}
+	if( document.getElementById("sub-region-code").checked){
+	html +=  "<td style=text-align:center>"+ctryrecobj.subregioncode+"</td>";
+	}
+	if( document.getElementById("intermediate-region-code").checked){
+		if(ctryrecobj.intermediateregioncode == ""){
+			html +=  "<td  bgcolor=pink>"+ctryrecobj.intermediateregioncode+"</td>";
+		}
+	else{
+			html +=  "<td style=text-align:center>"+ctryrecobj.intermediateregioncode+"</td>";
+		}
+	}
+	if( document.getElementById("captial-city").checked){
+	html +=  "<td style=text-align:center>"+ctryrecobj.capitalcity+"</td>";
+	}
+	if( document.getElementById("currency").checked){
+	html +=  "<td style=text-align:center>"+ctryrecobj.currency+"</td>";
+	}
+	if( document.getElementById("currency-code").checked){
+	html +=  "<td style=text-align:center>"+ctryrecobj.currencycode+"</td>";
+	}
+	if( document.getElementById("population").checked){
+		var num = parseInt(ctryrecobj.population);
+		html += "<td>"+num.toLocaleString();+"</b></td>";
+	}
+
+	html += "</tr>";
+
+	}
+	html += "</table>";
+		
+	document.getElementById("table").innerHTML = html;
+	
+}
+
+function selectall(){
+	document.getElementById("name").checked = true;
+	document.getElementById("alpha-2").checked = true;
+	document.getElementById("alpha-3").checked = true;
+	document.getElementById("country-code").checked = true;
+	document.getElementById("iso_3166-2").checked = true;	
+	document.getElementById("region").checked = true;
+	document.getElementById("sub-region").checked = true;
+	document.getElementById("intermediate-region").checked = true;
+	document.getElementById("region-code").checked = true;
+	document.getElementById("sub-region-code").checked = true;
+	document.getElementById("intermediate-region-code").checked = true;
+	document.getElementById("captial-city").checked = true;
+	document.getElementById("currency").checked = true;
+	document.getElementById("currency-code").checked = true;
+	document.getElementById("population").checked = true;
+	
+
+	
+
+}
+
+
+</script>
+<script>
+
+	</script>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+#div1 {
+  width: 350px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+</style>
+
+</head>
+<body>
+<h1>IGOR Country Data(AJAX-XML) Prototype</h1>
+<hr></hr>
+<h1>Select the data that you want to Retrieve</h1>
+<P style="display:inline"></p>&nbsp;&nbsp;<button onclick="selectall();">Select All </button><br /><br />
+<input type="checkbox" id="name" value="name">Name<br>
+<input type="checkbox" id="alpha-2" value="alpha-2">Alpha-2<br>
+<input type="checkbox" id="alpha-3" value="alpha-3">Alpha-3<br>
+<input type="checkbox" id="country-code" value="country-code">Country-Code<br>
+<input type="checkbox" id="iso_3166-2" value="iso_3166-2">ISO_3166-2<br>
+<input type="checkbox" id="region" value="region">Region<br>
+<input type="checkbox" id="sub-region" value="sub-region">Sub-Region<br>
+<input type="checkbox" id="intermediate-region" value="intermediate-region">Intermediate-Region<br>
+<input type="checkbox" id="region-code" value="region-code">Region-Code<br>
+<input type="checkbox" id="sub-region-code" value="sub-region-code">Sub-Region-Code<br>
+<input type="checkbox" id="intermediate-region-code" value="intermediate-region-code">Intermediate-Region-Code<br>
+<input type="checkbox" id="captial-city" value="captial-city">Captial-City<br>
+<input type="checkbox" id="currency" value="currency">Currency<br>
+<input type="checkbox" id="currency-code" value="currency-code">Currency-Code<br>
+<input type="checkbox" id="population" value="population">Population<br
+
+
+
+ 
+
+<P style="display:inline"></p>&nbsp;&nbsp;<button onclick="load();">Load Table </button><br /><br />
+<hr></hr>
+<h1>Displaying Country Data...</h1>
+
+<table id="table"></table>
+
+
+</body>
+</html>
